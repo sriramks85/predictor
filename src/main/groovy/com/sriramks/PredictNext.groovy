@@ -1,7 +1,5 @@
 package com.sriramks
-/**
- * Created by a1257317 on 7/24/17.
- */
+
 class PredictNext {
 
 

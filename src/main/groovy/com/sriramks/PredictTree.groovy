@@ -1,7 +1,5 @@
 package com.sriramks
-/**
- * Created by a1257317 on 7/24/17.
- */
+
 class PredictTree {
 
     List<PredictNode> skus
@@ -16,11 +14,6 @@ class PredictTree {
 
     void addValues(String skuId, String userId) {
         rootNode.nodeVisitors++
-        //  Find the lastAccessedSku by User
-        //  If the lastAccessedSku does not exist then fetch the root PredictNode from the rootNode and add the User to it and recompute probability, also update the lastAccessedSku
-        //  If lastAccessedSku exist then try finding the sku in immediate child nodes
-        // If sku exists then add the userId to it and recompute the nodes probability, also update lastAccessedSku for the User
-        // If sku does not exist then add a new child node to the last accessed node with skuId and userId and probability
         PredictNode predictNode = lastAccessedSku.get(userId)
         if(predictNode) {
             computePredictNode(predictNode, skuId, userId)
@@ -29,6 +22,11 @@ class PredictTree {
         }
 
     }
+    //  Find the lastAccessedSku by User
+    //  If the lastAccessedSku does not exist then fetch the root PredictNode from the rootNode and add the User to it and recompute probability, also update the lastAccessedSku
+    //  If lastAccessedSku exist then try finding the sku in immediate child nodes
+    // If sku exists then add the userId to it and recompute the nodes probability, also update lastAccessedSku for the User
+    // If sku does not exist then add a new child node to the last accessed node with skuId and userId and probability
 
     private void computePredictNode(PredictNode predictNode, String skuId, String userId) {
         predictNode.nodeVisitors++
